@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.mero_gadi">
+    package="com.shrestha.mero_gadi">
    <application
         android:label="Mero Gadi"
         android:icon="@mipmap/ic_launcher">

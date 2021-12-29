@@ -1,39 +1,26 @@
-// ignore_for_file: unnecessary_new
 import 'package:flutter/material.dart';
-import './login.dart';
+import 'package:Merogadi/Screens/Welcome/welcome_screen.dart';
+import 'package:Merogadi/constants.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
-  runApp(new MaterialApp(
-      debugShowCheckedModeBanner: false, title: 'MeroGadi', home: new MyApp()));
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => new _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
-  void initState() {
-    super.initState();
-    new Future.delayed(
-      const Duration(seconds: 3),
-      () => Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => login()),
-      ),
-    );
-  }
-
+class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-        backgroundColor: Color(0xFF000000),
-        body: SizedBox(
-          width: 2220,
-          height: 1080,
-          child: Image.asset('assets/images/splashscreen.png'),
-        ));
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Mero Gadi',
+      theme: ThemeData(
+        primaryColor: kPrimaryColor,
+        scaffoldBackgroundColor: Colors.white,
+      ),
+      home: WelcomeScreen(),
+    );
   }
 }

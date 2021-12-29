@@ -1,4 +1,4 @@
-package com.example.mero_gadi
+package com.shrestha.mero_gadi
 
 import io.flutter.embedding.android.FlutterActivity
 
