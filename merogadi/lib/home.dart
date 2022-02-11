@@ -50,46 +50,36 @@ class _HomePageState extends State<HomePage> {
 
   Widget _buildFeatureContent() => Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: const <Widget>[
-          Opacity(
-            opacity: 1,
-            child: Text(
-              "Parts and accessories",
-            ),
+        children: <Widget>[
+          ElevatedButton(
+            onPressed: () {},
+            child: const Text('Parts and Accessories'),
           ),
-          Opacity(
-            opacity: 1,
-            child: Text(
-              "General Services",
-            ),
+          ElevatedButton(
+            onPressed: () {},
+            child: const Text('General Services'),
           ),
         ],
       );
+
   Widget _buildFeatureContentSecond() => Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: const <Widget>[
-          Opacity(
-            opacity: 1,
-            child: Text(
-              "Repair",
-            ),
+        children: <Widget>[
+          ElevatedButton(
+            onPressed: () {},
+            child: const Text('Repair'),
           ),
-          SizedBox(height: 5),
-          Opacity(
-            opacity: 1,
-            child: Text(
-              "Pickup and drop service",
-            ),
+          ElevatedButton(
+            onPressed: () {},
+            child: const Text('Pickup and drop service'),
           ),
-          SizedBox(height: 5),
-          Opacity(
-            opacity: 1,
-            child: Text(
-              "Parts upgrade",
-            ),
+          ElevatedButton(
+            onPressed: () {},
+            child: const Text('Parts upgrade'),
           ),
         ],
       );
+
   Widget _buildActivitiesWidget() => const Padding(
         padding: EdgeInsets.only(bottom: 16),
         child: ActivitiesWidget(
