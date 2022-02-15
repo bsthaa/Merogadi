@@ -1,7 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:merogadi/signup_screen.dart';
 import 'package:merogadi/home.dart';
@@ -71,7 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
             return ("Password is required for login");
           }
           if (!regex.hasMatch(value)) {
-            return ("Enter Valid Password(Min. 6 Character)");
+            return ("Enter Valid Password minimum 6 character.)");
           }
         },
         onSaved: (value) {

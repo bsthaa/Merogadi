@@ -2,6 +2,9 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:merogadi/widgets/activities/activities_widget.dart';
 import 'package:merogadi/widgets/activities/activity_widget.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:merogadi/userdata/user_model.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
