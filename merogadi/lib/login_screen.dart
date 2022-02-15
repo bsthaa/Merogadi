@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:merogadi/password_reset.dart';
 import 'package:merogadi/signup_screen.dart';
 import 'package:merogadi/home.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -129,6 +130,16 @@ class _LoginScreenState extends State<LoginScreen> {
                     SizedBox(height: 35),
                     loginButton,
                     SizedBox(height: 15),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TextButton(
+                            child: Text('Forgot Password?'),
+                            onPressed: () => Navigator.of(context).push(
+                                MaterialPageRoute(
+                                    builder: (context) => ResetScreen())))
+                      ],
+                    ),
                     Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
