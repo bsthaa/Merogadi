@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "294335076763",
+    "project_id": "merogadi",
+    "storage_bucket": "merogadi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:294335076763:android:e2ed8fa5c75798bbb6693e",
+        "android_client_info": {
+          "package_name": "com.example.merogadi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "294335076763-23ke3boas54qvn86v70p240k3j8o6n9p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.merogadi",
+            "certificate_hash": "6abcaa215b551c1d3be181652e72483f9caba138"
+          }
+        },
+        {
+          "client_id": "294335076763-ihrqtcf03knounu9f9ida0c20uao5hf8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDubjTf7aFqJKX9s83qRK5tTtEOdV7wB-s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "294335076763-ihrqtcf03knounu9f9ida0c20uao5hf8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

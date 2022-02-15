@@ -97,7 +97,7 @@ class InitState extends State<SignUpScreen> {
             decoration: InputDecoration(
               icon: Icon(
                 Icons.email,
-                color: Color(0xff1A237E),
+                color: Color(0xff1E88E5),
               ),
               hintText: "Email",
               enabledBorder: InputBorder.none,
