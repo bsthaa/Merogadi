@@ -1,10 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:merogadi/widgets/activities/activities_widget.dart';
-import 'package:merogadi/widgets/activities/activity_widget.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:merogadi/userdata/user_model.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:merogadi/card_widget.dart';
+import 'companies_list.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -14,121 +11,180 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  get bottom => null;
-
-  Widget _buildTitle() {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Merogadi',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-    );
-  }
-
-  Widget _buildSearch() => Column(
-        children: <Widget>[
-          AppBar(
-            title: Container(
-              width: double.infinity,
-              height: 40,
-              color: Colors.white,
-              child: TextField(
-                decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.search),
-                  suffixIcon: IconButton(
-                    icon: Icon(Icons.clear),
-                    onPressed: () {
-                      /* Clear the search field */
-                    },
-                  ),
-                  hintText: 'Search for something....',
-                  border: InputBorder.none,
-                ),
-              ),
-            ),
-          ),
-        ],
-      );
-
-  Widget _buildFeatureContent() => Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          ElevatedButton(
-            onPressed: () {},
-            child: const Text('Parts and Accessories'),
-          ),
-          ElevatedButton(
-            onPressed: () {},
-            child: const Text('General Services'),
-          ),
-        ],
-      );
-
-  Widget _buildFeatureContentSecond() => Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: <Widget>[
-          ElevatedButton(
-            onPressed: () {},
-            child: const Text('Repair'),
-          ),
-          ElevatedButton(
-            onPressed: () {},
-            child: const Text('Pickup and drop service'),
-          ),
-          ElevatedButton(
-            onPressed: () {},
-            child: const Text('Parts upgrade'),
-          ),
-        ],
-      );
-
-  Widget _buildActivitiesWidget() => const Padding(
-        padding: EdgeInsets.only(bottom: 16),
-        child: ActivitiesWidget(
-          activities: {
-            ActivityType.book: ActivityQuality.good,
-            ActivityType.location: ActivityQuality.bad,
-            ActivityType.profile: ActivityQuality.good,
-          },
-        ),
-      );
-
-  Widget _buildDetailsWidget() => Expanded(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Image.asset("assets/images/icon_arrow_down.png",
-                width: 12, height: 12),
-          ],
-        ),
-      );
-
-  Widget _buildExpandedContent() => Expanded(
-        child: Column(
-          children: <Widget>[
-            Expanded(child: Container()),
-            _buildFeatureContent(),
-            _buildFeatureContentSecond(),
-            _buildDetailsWidget(),
-          ],
-        ),
-      );
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            _buildTitle(),
-            _buildSearch(),
-            _buildExpandedContent(),
-            _buildActivitiesWidget(),
-          ],
-        ),
-      ),
+      backgroundColor: const Color(0xffffffff),
+
+      //screen body
+      body: SingleChildScrollView(
+          child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16.0, 48.0, 16.0, 24.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Icon(
+                  Icons.menu_outlined,
+                  size: 48,
+                  color: Colors.black,
+                ),
+                ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.asset(
+                      "assets/images/profile.png",
+                      height: 50,
+                      width: 48,
+                      fit: BoxFit.cover,
+                    )),
+              ],
+            ),
+          ),
+
+          // SizedBox(
+          //   width: 150,
+          //   child: Row(
+          //     children: [
+          //       Image.asset(
+          //         "assets/images/logo.png",
+          //         height: 70,
+          //         width: 64,
+          //         fit: BoxFit.fill,
+          //       ),
+          //       const SizedBox(
+          //         width: 4.0,
+          //       ),
+          //       // const Text(
+          //       //   "Milao",
+          //       //   style: TextStyle(
+          //       //     color: Colors.black,
+          //       //     fontWeight: FontWeight.w700,
+          //       //     fontSize: 30,
+          //       //   ),
+          //       // )
+          //     ],
+          //   ),
+          // ),
+
+          const Text(
+            "Your one and only",
+            style: TextStyle(
+                color: Colors.black, fontWeight: FontWeight.w700, fontSize: 22),
+          ),
+          const Text(
+            "Bike stop",
+            style: TextStyle(
+                color: Colors.black, fontWeight: FontWeight.w700, fontSize: 22),
+          ),
+
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                const SizedBox(
+                  height: 50,
+                  width: 250,
+                  child: TextField(
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(
+                        Icons.search,
+                        color: Colors.grey,
+                      ),
+                      hintText: "Search motorbike products and features..",
+                      fillColor: Colors.white,
+                      filled: true,
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                        Radius.circular(10.0),
+                      )),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Container(
+                      width: 60,
+                      color: Colors.white,
+                      child: FlatButton(
+                          onPressed: () {},
+                          child: const Icon(
+                            Icons.tune,
+                            size: 40,
+                            color: Colors.black,
+                          ))),
+                )
+              ],
+            ),
+          ),
+
+          SizedBox(
+              height: 170,
+              width: MediaQuery.of(context).size.width,
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: const HomeCards(
+                        title: "General service",
+                        background: Color(0xFF86AFAE),
+                        icons: Icons.miscellaneous_services,
+                      ),
+                    ),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: const HomeCards(
+                        title: "Repair",
+                        background: Color(0xFFDCEDC8),
+                        icons: Icons.build_circle,
+                      ),
+                    )
+                  ])),
+          // const Padding(
+          //   padding: EdgeInsets.fromLTRB(16.0, 4.0, 0.0, 4.0),
+          //   child: Align(
+          //     alignment: Alignment.topLeft,
+          //     child: Text(
+          //       "Best of List",
+          //       style: TextStyle(
+          //           color: Colors.black,
+          //           fontWeight: FontWeight.w500,
+          //           fontSize: 24),
+          //     ),
+          //   ),
+          // ),
+
+          SizedBox(
+              height: 170,
+              width: MediaQuery.of(context).size.width,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  GestureDetector(
+                    onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => CompaniesList())),
+                    child: const HomeCards(
+                      title: "Service center",
+                      background: Color(0xFFFBE9E7),
+                      icons: Icons.store_mall_directory,
+                    ),
+                  ),
+                  const HomeCards(
+                    title: "Parts and accessories",
+                    background: Color(0xFFE0F2F1),
+                    icons: Icons.two_wheeler,
+                  ),
+                ],
+              )),
+        ],
+      )),
     );
   }
 }
