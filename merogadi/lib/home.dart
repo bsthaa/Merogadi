@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:merogadi/card_widget.dart';
-import 'companies_list.dart';
+import 'package:merogadi/service_center.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -169,7 +169,7 @@ class _HomePageState extends State<HomePage> {
                     onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => CompaniesList())),
+                            builder: (context) => ServiceCenterList())),
                     child: const HomeCards(
                       title: "Service center",
                       background: Color(0xFFFBE9E7),

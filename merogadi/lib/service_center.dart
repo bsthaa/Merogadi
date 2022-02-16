@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:merogadi/company_info.dart';
+import 'package:merogadi/service_center_info.dart';
 
-class CompaniesList extends StatefulWidget {
-  const CompaniesList({Key? key}) : super(key: key);
+class ServiceCenterList extends StatefulWidget {
+  const ServiceCenterList({Key? key}) : super(key: key);
 
   @override
-  _CompaniesListState createState() => _CompaniesListState();
+  _ServiceCenterListState createState() => _ServiceCenterListState();
 }
 
-class _CompaniesListState extends State<CompaniesList> {
+class _ServiceCenterListState extends State<ServiceCenterList> {
   @override
   Widget build(BuildContext context) {
     //list of the cards data
@@ -154,7 +154,7 @@ class _CompaniesListState extends State<CompaniesList> {
                       e['imageUrl'],
                       e['rating'],
                       e['location'],
-                      e['vacancy'],
+                      e['services'],
                     );
                   }).toList(),
                 ),
@@ -164,14 +164,14 @@ class _CompaniesListState extends State<CompaniesList> {
     );
   }
 
-  Widget buildCard(title, imageurl, rating, location, vacancy) => Padding(
+  Widget buildCard(title, imageurl, rating, location, services) => Padding(
         padding: const EdgeInsets.all(4.0),
         child: Container(
           height: 100,
           child: InkWell(
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => CompanyInfo()));
+                  MaterialPageRoute(builder: (context) => ServiceCenterInfo()));
             },
             child: Card(
               elevation: 0.2,
@@ -249,7 +249,7 @@ class _CompaniesListState extends State<CompaniesList> {
                                   ),
                                 ),
                                 TextSpan(
-                                  text: vacancy,
+                                  text: services,
                                   style: const TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w500,

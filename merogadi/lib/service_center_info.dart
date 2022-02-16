@@ -5,14 +5,14 @@ import 'package:merogadi/button_widget.dart';
 import 'package:merogadi/data_rows.dart';
 import 'package:merogadi/iconned_button.dart';
 
-class CompanyInfo extends StatefulWidget {
-  const CompanyInfo({Key? key}) : super(key: key);
+class ServiceCenterInfo extends StatefulWidget {
+  const ServiceCenterInfo({Key? key}) : super(key: key);
 
   @override
-  _CompanyInfoState createState() => _CompanyInfoState();
+  _ServiceCenterInfoState createState() => _ServiceCenterInfoState();
 }
 
-class _CompanyInfoState extends State<CompanyInfo> {
+class _ServiceCenterInfoState extends State<ServiceCenterInfo> {
   //List of company's details
   List specificdata = [
     {"text1": "Website", "text2": "www.newarautomobile.com"},
