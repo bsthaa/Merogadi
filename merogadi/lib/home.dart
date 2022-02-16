@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:merogadi/card_widget.dart';
 import 'package:merogadi/service_center.dart';
+import 'package:merogadi/profile_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -32,12 +33,20 @@ class _HomePageState extends State<HomePage> {
                 ),
                 ClipRRect(
                     borderRadius: BorderRadius.circular(10),
-                    child: Image.asset(
-                      "assets/images/profile.png",
-                      height: 50,
-                      width: 48,
-                      fit: BoxFit.cover,
-                    )),
+                    child: TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const ProfileScreen()),
+                          );
+                        },
+                        child: Image.asset(
+                          "assets/images/profile.png",
+                          height: 50,
+                          width: 48,
+                          fit: BoxFit.cover,
+                        ))),
               ],
             ),
           ),
@@ -85,7 +94,7 @@ class _HomePageState extends State<HomePage> {
               children: [
                 const SizedBox(
                   height: 50,
-                  width: 250,
+                  width: 330,
                   child: TextField(
                     decoration: InputDecoration(
                       prefixIcon: Icon(
@@ -180,6 +189,30 @@ class _HomePageState extends State<HomePage> {
                     title: "Parts and accessories",
                     background: Color(0xFFE0F2F1),
                     icons: Icons.two_wheeler,
+                  ),
+                ],
+              )),
+          SizedBox(
+              height: 170,
+              width: MediaQuery.of(context).size.width,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  GestureDetector(
+                    onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ServiceCenterList())),
+                    child: const HomeCards(
+                      title: "Nearby",
+                      background: Color(0xFFFBE9E7),
+                      icons: Icons.near_me,
+                    ),
+                  ),
+                  const HomeCards(
+                    title: "Booking",
+                    background: Color(0xFFE0F2F1),
+                    icons: Icons.book,
                   ),
                 ],
               )),
