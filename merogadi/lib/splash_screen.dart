@@ -25,13 +25,13 @@ class StartState extends State<SplashScreen> {
   }
 
   startTime() async {
-    var duration = const Duration(seconds: 4);
+    var duration = const Duration(seconds: 1);
     return Timer(duration, route);
   }
 
   route() {
     Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => LoginScreen()));
+        context, MaterialPageRoute(builder: (context) => const LoginScreen()));
   }
 
   Widget initWidget(BuildContext context) {
@@ -47,9 +47,7 @@ class StartState extends State<SplashScreen> {
                     end: Alignment.bottomCenter)),
           ),
           Center(
-            child: Container(
-              child: Image.asset("assets/images/app_logo.png"),
-            ),
+            child: Image.asset("assets/images/app_logo.png"),
           )
         ],
       ),

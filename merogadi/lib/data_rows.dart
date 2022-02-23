@@ -7,8 +7,7 @@ class DataRows extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: Padding(
+    return Padding(
       padding: const EdgeInsets.fromLTRB(0.0, 8.0, 0.0, 8.0),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
@@ -25,13 +24,13 @@ class DataRows extends StatelessWidget {
           Text(
             text2,
             style: const TextStyle(
-              color: Colors.black,
+              color: Colors.white,
               fontSize: 18,
               fontWeight: FontWeight.w500,
             ),
           )
         ],
       ),
-    ));
+    );
   }
 }

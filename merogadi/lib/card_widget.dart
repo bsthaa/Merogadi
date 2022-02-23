@@ -18,50 +18,48 @@ class HomeCards extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Card(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-          child: Container(
-            height: 150,
-            width: 150,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: background,
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  CircleAvatar(
-                    radius: 24,
-                    backgroundColor: Color(0xFFB0BEC5),
-                    child: Icon(
-                      icons,
-                      size: 36,
-                      color: Colors.black,
-                    ),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Card(
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+        child: Container(
+          height: 150,
+          width: 150,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color: background,
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                CircleAvatar(
+                  radius: 24,
+                  backgroundColor: Colors.white,
+                  child: Icon(
+                    icons,
+                    size: 36,
+                    color: Colors.black,
                   ),
-                  const SizedBox(
-                    height: 8,
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                Align(
+                  alignment: FractionalOffset.bottomCenter,
+                  child: Text(
+                    title,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.black),
                   ),
-                  Align(
-                    alignment: FractionalOffset.bottomCenter,
-                    child: Text(
-                      title,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.black),
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),

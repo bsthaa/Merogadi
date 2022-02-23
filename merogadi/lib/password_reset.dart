@@ -1,9 +1,10 @@
-import 'dart:io';
+//import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:merogadi/signup_screen.dart';
-import 'package:merogadi/home.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+// import 'package:merogadi/signup_screen.dart';
+// import 'package:merogadi/home.dart';
+// import 'package:fluttertoast/fluttertoast.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class ResetScreen extends StatefulWidget {
   const ResetScreen({Key? key}) : super(key: key);
@@ -17,8 +18,8 @@ class _ResetScreenState extends State<ResetScreen> {
   final _formKey = GlobalKey<FormState>();
 
   // editing controller
-  final TextEditingController emailController = new TextEditingController();
-  final TextEditingController passwordController = new TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   // firebase
   final _auth = FirebaseAuth.instance;
@@ -30,45 +31,61 @@ class _ResetScreenState extends State<ResetScreen> {
   Widget build(BuildContext context) {
     //email field
     final emailField = TextFormField(
-        autofocus: false,
-        controller: emailController,
-        keyboardType: TextInputType.emailAddress,
-        validator: (value) {
-          if (value!.isEmpty) {
-            return ("Please Enter Your Email");
-          }
-          // reg expression for email validation
-          if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
-              .hasMatch(value)) {
-            return ("Please Enter a valid email");
-          }
-          return null;
-        },
-        onSaved: (value) {
-          emailController.text = value!;
-        },
-        textInputAction: TextInputAction.next,
-        decoration: InputDecoration(
-          prefixIcon: Icon(Icons.mail),
-          contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-          hintText: "Enter email id to reset password",
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-        ));
+      style: const TextStyle(color: Colors.black),
+      decoration: InputDecoration(
+        fillColor: Colors.white,
+        filled: true,
+        prefixIcon: const Icon(
+          Icons.mail,
+          color: Colors.black,
+        ),
+        contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+        hintText: "Enter email id to reset password",
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+      ),
+      autofocus: false,
+      controller: emailController,
+      keyboardType: TextInputType.emailAddress,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return ("Please Enter Your Email");
+        }
+        // reg expression for email validation
+        if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]").hasMatch(value)) {
+          return ("Please Enter a valid email");
+        }
+        return null;
+      },
+      onSaved: (value) {
+        emailController.text = value!;
+      },
+      textInputAction: TextInputAction.next,
+      // decoration: InputDecoration(
+      //   prefixIcon: const Icon(Icons.mail),
+      //   contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+      //   hintText: "Enter email id to reset password",
+      //   border: OutlineInputBorder(
+      //     borderRadius: BorderRadius.circular(10),
+      //   ),
+      // )
+    );
 
     final loginButton = Material(
       elevation: 5,
       borderRadius: BorderRadius.circular(30),
-      color: Color(0xff1565C0),
+      color: const Color(0xff1565C0),
       child: MaterialButton(
-          padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+          padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
           minWidth: MediaQuery.of(context).size.width,
           onPressed: () {
             _auth.sendPasswordResetEmail(email: emailController.text);
+            Fluttertoast.showToast(
+                msg: "Email has been sent to the entered email address.");
             Navigator.of(context).pop();
           },
-          child: Text(
+          child: const Text(
             "Send request",
             textAlign: TextAlign.center,
             style: TextStyle(
@@ -78,13 +95,14 @@ class _ResetScreenState extends State<ResetScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Reset Password'),
+        backgroundColor: const Color(0xff18203d),
+        title: const Text('Reset Password'),
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: const Color(0xff18203d),
       body: Center(
         child: SingleChildScrollView(
           child: Container(
-            color: Colors.white,
+            color: const Color(0xff18203d),
             child: Padding(
               padding: const EdgeInsets.all(45.0),
               child: Form(
@@ -94,17 +112,18 @@ class _ResetScreenState extends State<ResetScreen> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     SizedBox(
-                        height: 200,
+                        height: 300,
+                        width: 300,
                         child: Image.asset(
-                          "assets/images/logo.png",
+                          "assets/images/logo1.png",
                           fit: BoxFit.contain,
                         )),
-                    SizedBox(height: 45),
+                    const SizedBox(height: 45),
                     emailField,
-                    SizedBox(height: 25),
-                    SizedBox(height: 35),
+                    const SizedBox(height: 25),
+                    const SizedBox(height: 35),
                     loginButton,
-                    SizedBox(height: 15),
+                    const SizedBox(height: 15),
                   ],
                 ),
               ),

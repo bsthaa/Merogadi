@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:merogadi/service_center_info.dart';
 
@@ -12,7 +14,6 @@ class _ServiceCenterListState extends State<ServiceCenterList> {
   @override
   Widget build(BuildContext context) {
     //list of the cards data
-    final Size size = MediaQuery.of(context).size;
     List companydata = [
       {
         "title": "Newar automobile",
@@ -74,16 +75,17 @@ class _ServiceCenterListState extends State<ServiceCenterList> {
 
     return Scaffold(
       //color of the entire screen
-      backgroundColor: const Color(0XFFEFEBE9),
+      backgroundColor: const Color(0xff18203d),
 
       //app's appBar
       appBar: AppBar(
-        backgroundColor: const Color(0XFFEFEBE9),
+        backgroundColor: const Color(0xff18203d),
         elevation: 0,
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back,
-            color: Colors.black,
+            color: Colors.white,
+            size: 28,
           ),
           onPressed: () {
             //navigate back to home
@@ -93,8 +95,8 @@ class _ServiceCenterListState extends State<ServiceCenterList> {
         actions: const [
           Icon(
             Icons.search,
-            color: Colors.black,
-            size: 48,
+            color: Colors.white,
+            size: 28,
           )
         ],
       ),
@@ -116,7 +118,7 @@ class _ServiceCenterListState extends State<ServiceCenterList> {
                         style: TextStyle(
                           fontWeight: FontWeight.w900,
                           fontSize: 24,
-                          color: Colors.black,
+                          color: Colors.white,
                         ),
                       ),
                     ),
@@ -166,14 +168,17 @@ class _ServiceCenterListState extends State<ServiceCenterList> {
 
   Widget buildCard(title, imageurl, rating, location, services) => Padding(
         padding: const EdgeInsets.all(4.0),
-        child: Container(
+        child: SizedBox(
           height: 100,
           child: InkWell(
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ServiceCenterInfo()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ServiceCenterInfo()));
             },
             child: Card(
+              color: const Color(0xFFE0F7FA),
               elevation: 0.2,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),

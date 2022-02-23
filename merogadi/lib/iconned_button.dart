@@ -13,7 +13,7 @@ class IconnedButton extends StatelessWidget {
       : super(key: key);
 
   @override
-  Widget build(BuildContext context) => FlatButton(
+  Widget build(BuildContext context) => TextButton(
       onPressed: () {},
       child: RichText(
         text: TextSpan(children: [

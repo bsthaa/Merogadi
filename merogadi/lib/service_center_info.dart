@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:cupertino_icons/cupertino_icons.dart';
+//import 'package:cupertino_icons/cupertino_icons.dart';
 import 'package:merogadi/button_widget.dart';
 import 'package:merogadi/data_rows.dart';
 import 'package:merogadi/iconned_button.dart';
@@ -25,14 +25,15 @@ class _ServiceCenterInfoState extends State<ServiceCenterInfo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0XFFEFEBE9),
+      backgroundColor: const Color(0xff18203d),
       appBar: AppBar(
-        backgroundColor: const Color(0XFFEFEBE9),
+        backgroundColor: const Color(0xff18203d),
         elevation: 0,
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back,
-            color: Colors.black,
+            color: Colors.white,
+            size: 28,
           ),
           onPressed: () {
             //navigate back to home
@@ -42,8 +43,8 @@ class _ServiceCenterInfoState extends State<ServiceCenterInfo> {
         actions: const [
           Icon(
             CupertinoIcons.arrowshape_turn_up_right,
-            color: Colors.green,
-            size: 24,
+            color: Colors.white,
+            size: 28,
           )
         ],
       ),
@@ -66,6 +67,7 @@ class _ServiceCenterInfoState extends State<ServiceCenterInfo> {
               child: Text(
                 "Newar automobile",
                 style: TextStyle(
+                  color: Colors.white,
                   fontSize: 24,
                   fontWeight: FontWeight.w700,
                 ),
@@ -88,7 +90,7 @@ class _ServiceCenterInfoState extends State<ServiceCenterInfo> {
             //Bottom border
             PreferredSize(
                 child: Container(
-                  color: Colors.grey,
+                  color: Colors.white,
                   height: 2.0,
                 ),
                 preferredSize: const Size.fromHeight(2.0)),
@@ -101,22 +103,22 @@ class _ServiceCenterInfoState extends State<ServiceCenterInfo> {
               children: [
                 Container(
                   decoration: const BoxDecoration(
-                    color: Colors.white,
+                    color: Color(0xff1565C0),
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                   ),
                   child: const IconnedButton(
                       icondataa: Icons.add,
                       texttitle: "Add Review",
-                      colors: Colors.black),
+                      colors: Colors.white),
                 ),
                 Container(
                   decoration: const BoxDecoration(
-                    color: Colors.black,
+                    color: Color(0xff1565C0),
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                   ),
                   child: const IconnedButton(
-                      icondataa: Icons.remove_red_eye_outlined,
-                      texttitle: "Follow",
+                      icondataa: Icons.favorite,
+                      texttitle: "Favorite",
                       colors: Colors.white),
                 ),
               ],
@@ -129,7 +131,7 @@ class _ServiceCenterInfoState extends State<ServiceCenterInfo> {
                 child: Text(
                   "Service center info",
                   style: TextStyle(
-                      color: Colors.black,
+                      color: Colors.white,
                       fontWeight: FontWeight.w700,
                       fontSize: 24),
                 )),

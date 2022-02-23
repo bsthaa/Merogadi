@@ -15,21 +15,21 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffffffff),
+      backgroundColor: const Color(0xff18203d),
 
       //screen body
       body: SingleChildScrollView(
           child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.fromLTRB(16.0, 48.0, 16.0, 24.0),
+            padding: const EdgeInsets.fromLTRB(16.0, 48.0, 16.0, 48.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Icon(
                   Icons.menu_outlined,
                   size: 48,
-                  color: Colors.black,
+                  color: Colors.white,
                 ),
                 ClipRRect(
                     borderRadius: BorderRadius.circular(10),
@@ -41,12 +41,18 @@ class _HomePageState extends State<HomePage> {
                                 builder: (context) => const ProfileScreen()),
                           );
                         },
-                        child: Image.asset(
-                          "assets/images/profile.png",
-                          height: 50,
-                          width: 48,
-                          fit: BoxFit.cover,
-                        ))),
+                        child: const Icon(
+                          Icons.person,
+                          size: 40,
+                          color: Colors.white,
+                        )
+                        // child: Image.asset(
+                        //   "assets/images/man.png",
+                        //   height: 40,
+                        //   width: 40,
+                        //   fit: BoxFit.cover,
+                        // )
+                        )),
               ],
             ),
           ),
@@ -79,29 +85,29 @@ class _HomePageState extends State<HomePage> {
           const Text(
             "Your one and only",
             style: TextStyle(
-                color: Colors.black, fontWeight: FontWeight.w700, fontSize: 22),
+                color: Colors.white, fontWeight: FontWeight.w700, fontSize: 22),
           ),
           const Text(
             "Bike stop",
             style: TextStyle(
-                color: Colors.black, fontWeight: FontWeight.w700, fontSize: 22),
+                color: Colors.white, fontWeight: FontWeight.w700, fontSize: 22),
           ),
 
           Padding(
-            padding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 8.0),
+            padding: const EdgeInsets.fromLTRB(18.0, 13.5, 18.0, 13.5),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 const SizedBox(
                   height: 50,
-                  width: 330,
+                  width: 305,
                   child: TextField(
                     decoration: InputDecoration(
                       prefixIcon: Icon(
                         Icons.search,
-                        color: Colors.grey,
+                        color: Colors.black,
                       ),
-                      hintText: "Search motorbike products and features..",
+                      hintText: "Search...",
                       fillColor: Colors.white,
                       filled: true,
                       border: OutlineInputBorder(
@@ -119,11 +125,11 @@ class _HomePageState extends State<HomePage> {
                   child: Container(
                       width: 60,
                       color: Colors.white,
-                      child: FlatButton(
+                      child: TextButton(
                           onPressed: () {},
                           child: const Icon(
                             Icons.tune,
-                            size: 40,
+                            size: 35,
                             color: Colors.black,
                           ))),
                 )
@@ -132,16 +138,16 @@ class _HomePageState extends State<HomePage> {
           ),
 
           SizedBox(
-              height: 170,
+              height: 180,
               width: MediaQuery.of(context).size.width,
               child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(20),
                       child: const HomeCards(
                         title: "General service",
-                        background: Color(0xFF86AFAE),
+                        background: Color(0xFF80DEEA),
                         icons: Icons.miscellaneous_services,
                       ),
                     ),
@@ -149,7 +155,7 @@ class _HomePageState extends State<HomePage> {
                       borderRadius: BorderRadius.circular(10),
                       child: const HomeCards(
                         title: "Repair",
-                        background: Color(0xFFDCEDC8),
+                        background: Color(0xFFB2EBF2),
                         icons: Icons.build_circle,
                       ),
                     )
@@ -169,49 +175,45 @@ class _HomePageState extends State<HomePage> {
           // ),
 
           SizedBox(
-              height: 170,
+              height: 180,
               width: MediaQuery.of(context).size.width,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   GestureDetector(
                     onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => ServiceCenterList())),
+                            builder: (context) => const ServiceCenterList())),
                     child: const HomeCards(
                       title: "Service center",
-                      background: Color(0xFFFBE9E7),
+                      background: Color(0xFFB2DFDB),
                       icons: Icons.store_mall_directory,
                     ),
                   ),
                   const HomeCards(
                     title: "Parts and accessories",
-                    background: Color(0xFFE0F2F1),
+                    background: Color(0xFFA5D6A7),
                     icons: Icons.two_wheeler,
                   ),
                 ],
               )),
           SizedBox(
-              height: 170,
+              height: 180,
               width: MediaQuery.of(context).size.width,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   GestureDetector(
-                    onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ServiceCenterList())),
                     child: const HomeCards(
                       title: "Nearby",
-                      background: Color(0xFFFBE9E7),
+                      background: Color(0xFFFFCCBC),
                       icons: Icons.near_me,
                     ),
                   ),
                   const HomeCards(
                     title: "Booking",
-                    background: Color(0xFFE0F2F1),
+                    background: Color(0xFFFBE9E7),
                     icons: Icons.book,
                   ),
                 ],

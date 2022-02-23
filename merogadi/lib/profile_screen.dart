@@ -24,7 +24,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         .doc(user!.uid)
         .get()
         .then((value) {
-      this.loggedInUser = UserModel.fromMap(value.data());
+      loggedInUser = UserModel.fromMap(value.data());
       setState(() {});
     });
   }
@@ -32,62 +32,65 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xff18203d),
       appBar: AppBar(
+        backgroundColor: const Color(0xff18203d),
         title: const Text("Profile"),
         centerTitle: true,
       ),
       body: Center(
         child: Padding(
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               SizedBox(
-                height: 150,
-                child:
-                    Image.asset("assets/images/man.jpg", fit: BoxFit.contain),
+                height: 200,
+                width: 200,
+                child: Image.asset("assets/images/profile_pic.png",
+                    fit: BoxFit.contain),
               ),
               // Text(
               //   "User details",
               //   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               // ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
-              Text(
+              const Text(
                 "User name:",
                 style: TextStyle(
                     //backgroundColor: Colors.blue,
-                    color: Colors.black,
+                    color: Colors.white,
                     fontWeight: FontWeight.normal,
                     fontSize: 18),
               ),
               Text("${loggedInUser.firstName} ${loggedInUser.secondName}",
-                  style: TextStyle(
-                    color: Colors.black,
+                  style: const TextStyle(
+                    color: Colors.white,
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   )),
-              Text(
+              const Text(
                 "Email:",
                 style: TextStyle(
                     //backgroundColor: Colors.blue,
-                    color: Colors.black,
+                    color: Colors.white,
                     fontWeight: FontWeight.normal,
                     fontSize: 18),
               ),
               Text("${loggedInUser.email}",
-                  style: TextStyle(
-                    color: Colors.black,
+                  style: const TextStyle(
+                    color: Colors.white,
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   )),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               ActionChip(
-                  label: Text(
+                  label: const Text(
                     "Logout",
                     style: TextStyle(
                         //backgroundColor: Colors.blue,
@@ -109,6 +112,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Future<void> logout(BuildContext context) async {
     await FirebaseAuth.instance.signOut();
     Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => LoginScreen()));
+        MaterialPageRoute(builder: (context) => const LoginScreen()));
   }
 }
