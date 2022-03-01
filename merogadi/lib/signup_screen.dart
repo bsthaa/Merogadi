@@ -280,10 +280,10 @@ class _RegistrationScreenState extends State<SignUpScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   SizedBox(
-                      height: 200,
-                      width: 240,
+                      height: 150,
+                      width: 350,
                       child: Image.asset(
-                        "assets/images/backimg.png",
+                        "assets/images/backimg3.png",
                         fit: BoxFit.contain,
                       )),
                   const SizedBox(height: 45),

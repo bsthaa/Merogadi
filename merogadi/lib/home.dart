@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:merogadi/card_widget.dart';
+import 'package:merogadi/parts_and_acce.dart';
 import 'package:merogadi/service_center.dart';
 import 'package:merogadi/profile_screen.dart';
 
@@ -97,10 +98,10 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.fromLTRB(18.0, 13.5, 18.0, 13.5),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                const SizedBox(
+              children: const [
+                SizedBox(
                   height: 50,
-                  width: 305,
+                  width: 386,
                   child: TextField(
                     decoration: InputDecoration(
                       prefixIcon: Icon(
@@ -117,22 +118,22 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-                const SizedBox(
+                SizedBox(
                   width: 10,
                 ),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Container(
-                      width: 60,
-                      color: Colors.white,
-                      child: TextButton(
-                          onPressed: () {},
-                          child: const Icon(
-                            Icons.tune,
-                            size: 35,
-                            color: Colors.black,
-                          ))),
-                )
+                // ClipRRect(
+                //   borderRadius: BorderRadius.circular(10),
+                //   child: Container(
+                //       width: 60,
+                //       color: Colors.white,
+                //       child: TextButton(
+                //           onPressed: () {},
+                //           child: const Icon(
+                //             Icons.tune,
+                //             size: 35,
+                //             color: Colors.black,
+                //           ))),
+                // )
               ],
             ),
           ),
@@ -191,10 +192,14 @@ class _HomePageState extends State<HomePage> {
                       icons: Icons.store_mall_directory,
                     ),
                   ),
-                  const HomeCards(
-                    title: "Parts and accessories",
-                    background: Color(0xFFA5D6A7),
-                    icons: Icons.two_wheeler,
+                  GestureDetector(
+                    onTap: () => Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => const Parts())),
+                    child: const HomeCards(
+                      title: "Motorcycle Repair",
+                      background: Color(0xFFA5D6A7),
+                      icons: Icons.two_wheeler,
+                    ),
                   ),
                 ],
               )),

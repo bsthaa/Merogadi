@@ -40,7 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
           color: Colors.black,
         ),
         contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-        hintText: "Email",
+        hintText: "example@gmail.com",
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
         ),
@@ -50,11 +50,11 @@ class _LoginScreenState extends State<LoginScreen> {
       keyboardType: TextInputType.emailAddress,
       validator: (value) {
         if (value!.isEmpty) {
-          return ("Please Enter Your Email");
+          return ("Please enter your email id");
         }
         // reg expression for email validation
         if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]").hasMatch(value)) {
-          return ("Please Enter a valid email");
+          return ("Please enter a valid email id");
         }
         return null;
       },
@@ -86,7 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
           color: Colors.black,
         ),
         contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-        hintText: "Password",
+        hintText: "min.6 characters long",
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
         ),
@@ -100,7 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
           return ("Password is required for login");
         }
         if (!regex.hasMatch(value)) {
-          return ("Enter Valid Password minimum 6 character.)");
+          return ("Enter valid password having minimum 6 character)");
         }
       },
       onSaved: (value) {
