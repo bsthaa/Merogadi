@@ -39,6 +39,7 @@ class _FrameRepState extends State<Fuel> {
               padding: const EdgeInsets.all(8),
               child: Image.asset(
                 'assets/images/carburetot.jpg',
+                fit: BoxFit.fill,
               ),
             ),
             Container(

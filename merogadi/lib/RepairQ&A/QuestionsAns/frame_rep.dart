@@ -37,7 +37,10 @@ class _FrameRepState extends State<FrameRep> {
           children: <Widget>[
             Container(
               padding: const EdgeInsets.all(8),
-              child: Image.asset('assets/images/frame.jpg'),
+              child: Image.asset(
+                'assets/images/frame.jpg',
+                fit: BoxFit.fill,
+              ),
             ),
             Container(
                 padding: const EdgeInsets.all(8),
