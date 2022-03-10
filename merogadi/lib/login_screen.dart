@@ -50,11 +50,11 @@ class _LoginScreenState extends State<LoginScreen> {
       keyboardType: TextInputType.emailAddress,
       validator: (value) {
         if (value!.isEmpty) {
-          return ("Please enter your email id");
+          return ("Please enter your email id.");
         }
         // reg expression for email validation
         if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]").hasMatch(value)) {
-          return ("Please enter a valid email id");
+          return ("Please enter a valid email id.");
         }
         return null;
       },
@@ -97,10 +97,10 @@ class _LoginScreenState extends State<LoginScreen> {
       validator: (value) {
         RegExp regex = RegExp(r'^.{6,}$');
         if (value!.isEmpty) {
-          return ("Password is required for login");
+          return ("Password is required for login.");
         }
         if (!regex.hasMatch(value)) {
-          return ("Enter valid password having minimum 6 character)");
+          return ("Enter valid password having minimum 6 character).");
         }
       },
       onSaved: (value) {
@@ -240,13 +240,13 @@ class _LoginScreenState extends State<LoginScreen> {
             errorMessage = "User with this email has been disabled.";
             break;
           case "too-many-requests":
-            errorMessage = "Too many requests";
+            errorMessage = "Too many requests.";
             break;
           case "operation-not-allowed":
             errorMessage = "Signing in with Email and Password is not enabled.";
             break;
           default:
-            errorMessage = "An undefined Error happened.";
+            errorMessage = "Error / No internet connection.";
         }
         Fluttertoast.showToast(msg: errorMessage!);
         // ignore: avoid_print

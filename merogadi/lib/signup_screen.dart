@@ -52,10 +52,10 @@ class _RegistrationScreenState extends State<SignUpScreen> {
       validator: (value) {
         RegExp regex = RegExp(r'^.{3,}$');
         if (value!.isEmpty) {
-          return ("First Name cannot be Empty");
+          return ("First name cannot be empty.");
         }
         if (!regex.hasMatch(value)) {
-          return ("Enter Valid name(Min. 3 Character)");
+          return ("Enter valid name(Min. 3 Character)");
         }
         return null;
       },
@@ -84,7 +84,7 @@ class _RegistrationScreenState extends State<SignUpScreen> {
           color: Colors.black,
         ),
         contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-        hintText: "Second Name",
+        hintText: "Second name",
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
         ),
@@ -94,7 +94,7 @@ class _RegistrationScreenState extends State<SignUpScreen> {
       keyboardType: TextInputType.name,
       validator: (value) {
         if (value!.isEmpty) {
-          return ("Second Name cannot be Empty");
+          return ("Second name cannot be empty.");
         }
         return null;
       },
@@ -177,10 +177,10 @@ class _RegistrationScreenState extends State<SignUpScreen> {
       validator: (value) {
         RegExp regex = RegExp(r'^.{6,}$');
         if (value!.isEmpty) {
-          return ("Password is required for login");
+          return ("Password is required for login.");
         }
         if (!regex.hasMatch(value)) {
-          return ("Enter Valid Password(Min. 6 Character)");
+          return ("The password you entered doesn't meet the minimum security requirements.");
         }
       },
       onSaved: (value) {
@@ -332,13 +332,13 @@ class _RegistrationScreenState extends State<SignUpScreen> {
             errorMessage = "User with this email has been disabled.";
             break;
           case "too-many-requests":
-            errorMessage = "Too many requests";
+            errorMessage = "Error! Too many requests....";
             break;
           case "operation-not-allowed":
             errorMessage = "Signing in with Email and Password is not enabled.";
             break;
           default:
-            errorMessage = "An undefined Error happened.";
+            errorMessage = "Error / No internet connection.";
         }
         Fluttertoast.showToast(msg: errorMessage!);
         // ignore: avoid_print

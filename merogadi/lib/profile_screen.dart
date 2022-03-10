@@ -45,12 +45,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              SizedBox(
-                height: 200,
-                width: 200,
-                child: Image.asset("assets/images/profile_pic.png",
-                    fit: BoxFit.contain),
+              ClipOval(
+                child: Image.asset(
+                  'assets/images/founder&ceo.jpg',
+                  height: 200,
+                  width: 200,
+                  fit: BoxFit.contain,
+                ),
               ),
+
               // Text(
               //   "User details",
               //   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),

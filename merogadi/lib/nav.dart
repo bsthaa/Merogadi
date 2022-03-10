@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:merogadi/about.dart';
+import 'package:merogadi/contactus.dart';
+import 'package:merogadi/terms_and_cond.dart';
 
 class NavBar extends StatelessWidget {
   const NavBar({Key? key}) : super(key: key);
@@ -13,48 +16,109 @@ class NavBar extends StatelessWidget {
             decoration: const BoxDecoration(
               color: Color(0xff18203d),
             ),
-            accountName: const Text('Merogadi'),
+            accountName: const Text(
+              'Merogadi',
+              style: TextStyle(fontSize: 18),
+            ),
             accountEmail: const Text('www.merogadi.com'),
             currentAccountPicture: CircleAvatar(
               child: ClipOval(
                 child: Image.asset(
                   "assets/images/logo.jpg",
                   fit: BoxFit.cover,
-                  width: 90,
-                  height: 90,
+                  width: 200,
+                  height: 200,
                 ),
               ),
             ),
           ),
           ListTile(
-            leading: const Icon(Icons.favorite),
-            title: const Text('Favorites'),
+            leading: const Icon(
+              Icons.favorite,
+              size: 24,
+            ),
+            title: const Text(
+              'Favorites',
+              style: TextStyle(fontSize: 18),
+            ),
             onTap: () => {Navigator.of(context).pop()},
           ),
           ListTile(
-            leading: const Icon(Icons.share),
-            title: const Text('Share'),
+            leading: const Icon(
+              Icons.share,
+              size: 24,
+            ),
+            title: const Text(
+              'Share',
+              style: TextStyle(fontSize: 18),
+            ),
             onTap: () => {Navigator.of(context).pop()},
           ),
           ListTile(
-            leading: const Icon(Icons.call),
-            title: const Text('Help'),
+            leading: const Icon(
+              Icons.call,
+              size: 24,
+            ),
+            title: const Text(
+              'Contact us',
+              style: TextStyle(fontSize: 18),
+            ),
+            onTap: () => Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const ContactUs())),
+          ),
+          ListTile(
+            leading: const Icon(
+              Icons.quiz_sharp,
+              size: 24,
+            ),
+            title: const Text(
+              'FAQ',
+              style: TextStyle(fontSize: 18),
+            ),
             onTap: () => {Navigator.of(context).pop()},
           ),
           ListTile(
-            leading: const Icon(Icons.quiz_sharp),
-            title: const Text('FAQ'),
-            onTap: () => {Navigator.of(context).pop()},
+            leading: const Icon(
+              Icons.info,
+              size: 24,
+            ),
+            title: const Text(
+              'About',
+              style: TextStyle(fontSize: 18),
+            ),
+            onTap: () => Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const AboutUs())),
           ),
           ListTile(
-            leading: const Icon(Icons.description),
-            title: const Text('Terms and Condition'),
-            onTap: () => {Navigator.of(context).pop()},
+            leading: const Icon(
+              Icons.description,
+              size: 24,
+            ),
+            title: const Text(
+              'Terms and Condition',
+              style: TextStyle(fontSize: 18),
+            ),
+            onTap: () => Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const TermsCond())),
           ),
           ListTile(
-            leading: const Icon(Icons.settings),
-            title: const Text('Settings'),
+            leading: const Icon(
+              Icons.settings,
+              size: 24,
+            ),
+            title: const Text(
+              'Settings',
+              style: TextStyle(fontSize: 18),
+            ),
             onTap: () => {Navigator.of(context).pop()},
+          ),
+          const Text(
+            'Developed By Bibek Shrestha',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 14.0,
+              color: Colors.redAccent,
+            ),
           ),
         ],
       ),

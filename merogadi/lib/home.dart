@@ -76,7 +76,7 @@ class _HomePageState extends State<HomePage> {
               children: [
                 SizedBox(
                   height: 50,
-                  width: 386,
+                  width: 365,
                   child: TextField(
                     decoration: InputDecoration(
                       prefixIcon: IconButton(
