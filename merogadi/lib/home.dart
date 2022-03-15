@@ -177,7 +177,7 @@ class _HomePageState extends State<HomePage> {
                     onTap: () => Navigator.push(context,
                         MaterialPageRoute(builder: (context) => const Parts())),
                     child: const HomeCards(
-                      title: "Motorcycle Repair",
+                      title: "Repair guide",
                       background: Color(0xFFA5D6A7),
                       icons: Icons.two_wheeler,
                     ),

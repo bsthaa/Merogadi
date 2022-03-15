@@ -101,17 +101,17 @@ class NavBar extends StatelessWidget {
             onTap: () => Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const TermsCond())),
           ),
-          ListTile(
-            leading: const Icon(
-              Icons.settings,
-              size: 24,
-            ),
-            title: const Text(
-              'Settings',
-              style: TextStyle(fontSize: 18),
-            ),
-            onTap: () => {Navigator.of(context).pop()},
-          ),
+          // ListTile(
+          //   leading: const Icon(
+          //     Icons.settings,
+          //     size: 24,
+          //   ),
+          //   title: const Text(
+          //     'Settings',
+          //     style: TextStyle(fontSize: 18),
+          //   ),
+          //   onTap: () => {Navigator.of(context).pop()},
+          // ),
           const Text(
             'Developed By Bibek Shrestha',
             textAlign: TextAlign.center,

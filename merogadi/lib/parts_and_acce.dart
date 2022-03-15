@@ -18,7 +18,7 @@ class _PartsState extends State<Parts> {
       appBar: AppBar(
         backgroundColor: const Color(0xff18203d),
         title: const Text(
-          "Motorcycle Repair",
+          "Repair guide",
           style: TextStyle(
               color: Colors.white, fontWeight: FontWeight.w700, fontSize: 22),
         ),
