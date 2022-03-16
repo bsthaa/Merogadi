@@ -1,10 +1,12 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:merogadi/card_widget.dart';
+//import 'package:merogadi/map_utils.dart';
 import 'package:merogadi/nav.dart';
 import 'package:merogadi/parts_and_acce.dart';
 import 'package:merogadi/service_center.dart';
 import 'package:merogadi/profile_screen.dart';
+
+import 'map_utils.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -191,6 +193,9 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   GestureDetector(
+                    onTap: () {
+                      MapUtils.openMap(27.71226019953982, 85.3306405718298);
+                    },
                     child: const HomeCards(
                       title: "Nearby",
                       background: Color(0xFFFFCCBC),

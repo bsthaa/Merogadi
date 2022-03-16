@@ -102,6 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
         if (!regex.hasMatch(value)) {
           return ("Enter valid password having minimum 6 character).");
         }
+        return null;
       },
       onSaved: (value) {
         passwordController.text = value!;

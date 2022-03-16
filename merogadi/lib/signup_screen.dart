@@ -1,4 +1,3 @@
-import 'package:flutter/services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:merogadi/userdata/user_model.dart';
 import 'package:merogadi/home.dart';
@@ -182,6 +181,7 @@ class _RegistrationScreenState extends State<SignUpScreen> {
         if (!regex.hasMatch(value)) {
           return ("The password you entered doesn't meet the minimum security requirements.");
         }
+        return null;
       },
       onSaved: (value) {
         firstNameEditingController.text = value!;
