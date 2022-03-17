@@ -37,19 +37,26 @@ class _ContactUsState extends State<ContactUs> {
         body: ListView(
           children: <Widget>[
             Container(
-                padding: const EdgeInsets.all(8),
+                padding: const EdgeInsets.all(50),
                 child: const Text(
                   'Address: Boudha, Kathmandu',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 18.0,
+                    fontSize: 20.0,
                     color: Colors.white,
                   ),
                 )),
             Container(
-                padding: const EdgeInsets.all(15),
+                padding: const EdgeInsets.all(30),
+                width: 250.0,
+                height: 120.0,
                 child: ElevatedButton(
-                  child: const Text('Make Phone Call'),
+                  child: const Text(
+                    'Make Phone Call',
+                    style: TextStyle(
+                      fontSize: 20.0,
+                    ),
+                  ),
                   onPressed: () async {
                     const phoneNumber = '+977-9803836536';
                     const url = 'tel:$phoneNumber';
@@ -60,9 +67,16 @@ class _ContactUsState extends State<ContactUs> {
                   },
                 )),
             Container(
-                padding: const EdgeInsets.all(15),
+                width: 250.0,
+                height: 120.0,
+                padding: const EdgeInsets.all(30),
                 child: ElevatedButton(
-                  child: const Text('Send an Email'),
+                  child: const Text(
+                    'Send an Email',
+                    style: TextStyle(
+                      fontSize: 20.0,
+                    ),
+                  ),
                   onPressed: () async {
                     const toEmail = 'bibekshrestha242@gmail.com';
                     const subject = 'Big Fan';

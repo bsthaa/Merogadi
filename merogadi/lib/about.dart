@@ -35,10 +35,16 @@ class _AboutUsState extends State<AboutUs> {
         backgroundColor: const Color(0xff18203d),
         body: ListView(
           children: <Widget>[
+            const Text(('Merogadi'),
+                style: TextStyle(
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue)),
+            const SizedBox(height: 10),
             Container(
                 padding: const EdgeInsets.all(8),
                 child: const Text(
-                  '\n\nMerogadi is a service management system project that assists motorcycle owners withservice, motorbike wash, and booking service through well-known workshops with skilledmechanic heads and hospitality via an android mobile application with just a tap of a screen.Below is a list of the positive effects on users. Consumers can use the app to locate servicefacilities, obtain directions, and explore and select services offered at these locations.Orders may be picked up and returned, service appointments booked, test drives taken, andproduct purchases made at the dealer. In the motorbike service sector, the motorbike repairmanagement system is a significant advancement. This app used by any rider can locateand interact with nearby service center. All automobile owners have access to the suggestedsystem. The purpose of this project is to make motorbike maintenance more efficient than itis now, efficiency and quality are critical in the motorcycle repair industry. Machine and equipment planning helping decrease service downtime.',
+                  '\nMerogadi is a service management system project that assists motorcycle owners withservice, motorbike wash, and booking service through well-known workshops with skilledmechanic heads and hospitality via an android mobile application with just a tap of a screen.Below is a list of the positive effects on users. Consumers can use the app to locate servicefacilities, obtain directions, and explore and select services offered at these locations.Orders may be picked up and returned, service appointments booked, test drives taken, andproduct purchases made at the dealer. In the motorbike service sector, the motorbike repairmanagement system is a significant advancement. This app used by any rider can locateand interact with nearby service center. All automobile owners have access to the suggestedsystem. The purpose of this project is to make motorbike maintenance more efficient than itis now, efficiency and quality are critical in the motorcycle repair industry. Machine and equipment planning helping decrease service downtime.',
                   textAlign: TextAlign.justify,
                   style: TextStyle(
                     fontSize: 20.0,

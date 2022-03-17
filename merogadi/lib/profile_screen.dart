@@ -1,8 +1,10 @@
+import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:get/get.dart';
 import 'package:merogadi/userdata/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
+import 'package:image_picker/image_picker.dart';
 import 'login_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -13,8 +15,87 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  File? pickedImage;
   User? user = FirebaseAuth.instance.currentUser;
   UserModel loggedInUser = UserModel();
+
+  void imagePickerOption() {
+    Get.bottomSheet(
+      SingleChildScrollView(
+        child: ClipRRect(
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(10.0),
+            topRight: Radius.circular(10.0),
+          ),
+          child: Container(
+            color: const Color(0xff18203d),
+            height: 250,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  const Text(
+                    "Pic image from",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      pickImage(ImageSource.camera);
+                    },
+                    icon: const Icon(Icons.camera),
+                    label: const Text("CAMERA"),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      pickImage(ImageSource.gallery);
+                    },
+                    icon: const Icon(Icons.image),
+                    label: const Text("GALLERY"),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    icon: const Icon(Icons.close),
+                    label: const Text("CANCEL"),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  pickImage(ImageSource imageType) async {
+    try {
+      final photo = await ImagePicker().pickImage(source: imageType);
+      if (photo == null) return;
+      final tempImage = File(photo.path);
+      setState(() {
+        pickedImage = tempImage;
+      });
+
+      Get.back();
+    } catch (error) {
+      debugPrint(error.toString());
+    }
+  }
 
   @override
   void initState() {
@@ -42,25 +123,63 @@ class _ProfileScreenState extends State<ProfileScreen> {
         child: Padding(
           padding: const EdgeInsets.all(20),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              ClipOval(
-                child: Image.asset(
-                  'assets/images/founder&ceo.jpg',
-                  height: 200,
-                  width: 200,
-                  fit: BoxFit.contain,
-                ),
-              ),
-
+              // ClipOval(
+              //   child: Image.asset(
+              //     'assets/images/founder&ceo.jpg',
+              //     height: 200,
+              //     width: 200,
+              //     fit: BoxFit.contain,
+              //   ),
+              // ),
               // Text(
               //   "User details",
               //   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               // ),
-              const SizedBox(
-                height: 30,
+              ClipOval(
+                child: pickedImage != null
+                    ? Image.file(
+                        pickedImage!,
+                        width: 170,
+                        height: 170,
+                        fit: BoxFit.cover,
+                      )
+                    : Image.asset(
+                        'assets/images/dummyProfile.png',
+                        height: 200,
+                        width: 200,
+                        fit: BoxFit.contain,
+                      ),
               ),
+              Positioned(
+                bottom: 0,
+                right: 5,
+                child: IconButton(
+                  onPressed: imagePickerOption,
+                  icon: const Icon(
+                    Icons.add_a_photo_outlined,
+                    color: Colors.blue,
+                    size: 30,
+                  ),
+                ),
+              ),
+
+              // const SizedBox(
+              //   height: 20,
+              // ),
+              // Padding(
+              //   padding: const EdgeInsets.all(8.0),
+              //   child: ElevatedButton.icon(
+              //       onPressed: imagePickerOption,
+              //       icon: const Icon(Icons.add_a_photo_sharp),
+              //       label: const Text('UPLOAD IMAGE')),
+              // ),
+
+              // const SizedBox(
+              //   height: 5,
+              // ),
               const Text(
                 "User name:",
                 style: TextStyle(
@@ -75,6 +194,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   )),
+              // const SizedBox(
+              //   height: 20,
+              // ),
               const Text(
                 "Email:",
                 style: TextStyle(
@@ -90,16 +212,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     fontWeight: FontWeight.bold,
                   )),
               const SizedBox(
-                height: 15,
+                height: 5,
               ),
               ActionChip(
+                  backgroundColor: Colors.blue,
                   label: const Text(
                     "Logout",
                     style: TextStyle(
-                        //backgroundColor: Colors.blue,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20),
+                      //backgroundColor: Colors.blue,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ),
                   ),
                   onPressed: () {
                     logout(context);
