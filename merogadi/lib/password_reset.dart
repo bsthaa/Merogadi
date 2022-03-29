@@ -40,7 +40,7 @@ class _ResetScreenState extends State<ResetScreen> {
           color: Colors.black,
         ),
         contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-        hintText: "Enter email id to reset password",
+        hintText: "Enter your email to reset password",
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
         ),
@@ -50,7 +50,7 @@ class _ResetScreenState extends State<ResetScreen> {
       keyboardType: TextInputType.emailAddress,
       validator: (value) {
         if (value!.isEmpty) {
-          return ("Please Enter Your Email");
+          return ("Please enter your email.");
         }
         // reg expression for email validation
         if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]").hasMatch(value)) {
@@ -86,7 +86,7 @@ class _ResetScreenState extends State<ResetScreen> {
             Navigator.of(context).pop();
           },
           child: const Text(
-            "Send request",
+            "Send me a link!",
             textAlign: TextAlign.center,
             style: TextStyle(
                 fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
@@ -104,7 +104,7 @@ class _ResetScreenState extends State<ResetScreen> {
           child: Container(
             color: const Color(0xff18203d),
             child: Padding(
-              padding: const EdgeInsets.all(45.0),
+              padding: const EdgeInsets.all(20.0),
               child: Form(
                 key: _formKey,
                 child: Column(
@@ -115,13 +115,63 @@ class _ResetScreenState extends State<ResetScreen> {
                         height: 300,
                         width: 300,
                         child: Image.asset(
-                          "assets/images/logo1.png",
+                          "assets/images/backimg.png",
                           fit: BoxFit.contain,
                         )),
-                    const SizedBox(height: 45),
+                    Row(
+                      children: const [
+                        // const SizedBox(
+                        //   width: 4.0,
+                        // ),
+                        Text(
+                          "Enter your email address below and",
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            color: Colors.white,
+                            // fontWeight: FontWeight.w700,
+                            fontSize: 18,
+                          ),
+                        )
+                      ],
+                    ),
+                    const SizedBox(height: 10),
+                    Row(
+                      children: const [
+                        // const SizedBox(
+                        //   width: 4.0,
+                        // ),
+                        Text(
+                          "we'll email instruction for setting a new one.",
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            color: Colors.white,
+                            // fontWeight: FontWeight.w700,
+                            fontSize: 17,
+                          ),
+                        )
+                      ],
+                    ),
+                    const SizedBox(height: 30),
+                    Row(
+                      children: const [
+                        // const SizedBox(
+                        //   width: 4.0,
+                        // ),
+                        Text(
+                          "Email Address",
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            color: Colors.blue,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
+                        )
+                      ],
+                    ),
+                    const SizedBox(height: 30),
                     emailField,
                     const SizedBox(height: 25),
-                    const SizedBox(height: 35),
+                    const SizedBox(height: 30),
                     loginButton,
                     const SizedBox(height: 15),
                   ],

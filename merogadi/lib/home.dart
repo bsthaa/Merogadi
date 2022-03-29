@@ -5,6 +5,7 @@ import 'package:merogadi/nav.dart';
 import 'package:merogadi/parts_and_acce.dart';
 import 'package:merogadi/service_center.dart';
 import 'package:merogadi/profile_screen.dart';
+import 'package:merogadi/user_booking.dart';
 
 import 'map_utils.dart';
 
@@ -202,10 +203,16 @@ class _HomePageState extends State<HomePage> {
                       icons: Icons.near_me,
                     ),
                   ),
-                  const HomeCards(
-                    title: "Booking",
-                    background: Color(0xFFFBE9E7),
-                    icons: Icons.book,
+                  GestureDetector(
+                    onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const UserBook())),
+                    child: const HomeCards(
+                      title: "Booking",
+                      background: Color(0xFFFBE9E7),
+                      icons: Icons.book,
+                    ),
                   ),
                 ],
               )),

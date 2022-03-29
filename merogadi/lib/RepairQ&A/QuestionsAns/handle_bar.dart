@@ -3,19 +3,19 @@
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-class FrameRep extends StatefulWidget {
-  const FrameRep({Key? key}) : super(key: key);
+class HandleBar extends StatefulWidget {
+  const HandleBar({Key? key}) : super(key: key);
 
   @override
   _FrameRepState createState() => _FrameRepState();
 }
 
-class _FrameRepState extends State<FrameRep> {
+class _FrameRepState extends State<HandleBar> {
   late YoutubePlayerController controller;
   @override
   void initState() {
     super.initState();
-    const url = 'https://www.youtube.com/watch?v=SFn12d-zjuQ';
+    const url = 'https://www.youtube.com/watch?v=f_EH3usHq2k';
 
     controller = YoutubePlayerController(
       initialVideoId: YoutubePlayer.convertUrlToId(url)!,
@@ -46,7 +46,7 @@ class _FrameRepState extends State<FrameRep> {
             appBar: AppBar(
               backgroundColor: const Color(0xff18203d),
               title: const Text(
-                "Body and Frame",
+                "How to install handlebar",
                 style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w700,
@@ -100,10 +100,10 @@ class _FrameRepState extends State<FrameRep> {
                     )),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: Image.asset(
-                    'assets/images/frame.jpg',
-                    fit: BoxFit.fill,
-                  ),
+                  // child: Image.asset(
+                  //   'assets/images/frame.jpg',
+                  //   fit: BoxFit.fill,
+                  // ),
                 ),
                 // Container(
                 //   padding: const EdgeInsets.all(8),
