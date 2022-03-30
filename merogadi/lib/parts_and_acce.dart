@@ -22,7 +22,7 @@ class _PartsState extends State<Parts> {
               color: Colors.white, fontWeight: FontWeight.w700, fontSize: 22),
         ),
         centerTitle: true,
-        elevation: 0,
+        elevation: 4,
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back,

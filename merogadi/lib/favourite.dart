@@ -3,14 +3,14 @@
 import 'package:flutter/material.dart';
 import 'package:merogadi/service_center_info.dart';
 
-class ServiceCenterList extends StatefulWidget {
-  const ServiceCenterList({Key? key}) : super(key: key);
+class FavCenter extends StatefulWidget {
+  const FavCenter({Key? key}) : super(key: key);
 
   @override
-  _ServiceCenterListState createState() => _ServiceCenterListState();
+  _FavCenterState createState() => _FavCenterState();
 }
 
-class _ServiceCenterListState extends State<ServiceCenterList> {
+class _FavCenterState extends State<FavCenter> {
   @override
   Widget build(BuildContext context) {
     //list of the cards data
@@ -31,46 +31,6 @@ class _ServiceCenterListState extends State<ServiceCenterList> {
         "description":
             "All company motorbike services available with expirience technisian."
       },
-      {
-        "title": "Shuvam servicicng",
-        "imageUrl": "assets/images/man04.png",
-        "rating": "4.1",
-        "location": "Jorpati,Kathmandu",
-        "description":
-            "All company motorbike services available with expirience technisian."
-      },
-      {
-        "title": "Honda automobile",
-        "imageUrl": "assets/images/man03.png",
-        "rating": "3.9",
-        "location": "Chabahil,Kathmandu",
-        "description":
-            "All company motorbike services available with expirience technisian."
-      },
-      {
-        "title": "Addi service center",
-        "imageUrl": "assets/images/man05.png",
-        "rating": "3.8",
-        "location": "Naxal,Kathmandu",
-        "description":
-            "All company motorbike services available with expirience technisian."
-      },
-      {
-        "title": "Bibek automobile",
-        "imageUrl": "assets/images/man03.png",
-        "rating": "2.6",
-        "location": "Naxal,Kathmandu",
-        "description":
-            "All company motorbike services available with expirience technisian."
-      },
-      {
-        "title": "Honda automobile",
-        "imageUrl": "assets/images/man01.jpg",
-        "rating": "1.7",
-        "location": "Naxal,Kathmandu",
-        "description":
-            "All company motorbike services available with expirience technisian."
-      },
     ];
 
     return Scaffold(
@@ -80,6 +40,7 @@ class _ServiceCenterListState extends State<ServiceCenterList> {
       //app's appBar
       appBar: AppBar(
         backgroundColor: const Color(0xff18203d),
+        title: const Text("Favourite"),
         elevation: 4,
         leading: IconButton(
           icon: const Icon(
@@ -92,6 +53,13 @@ class _ServiceCenterListState extends State<ServiceCenterList> {
             Navigator.pop(context);
           },
         ),
+        actions: const [
+          Icon(
+            Icons.search,
+            color: Colors.white,
+            size: 28,
+          )
+        ],
       ),
 
       body: SingleChildScrollView(
@@ -103,41 +71,6 @@ class _ServiceCenterListState extends State<ServiceCenterList> {
                 Row(
                   //add padding,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        "Service Center",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w900,
-                          fontSize: 24,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                    FlatButton(
-                        onPressed: () {},
-                        color: Colors.green,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                            side: const BorderSide(color: Colors.blueGrey)),
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 10, vertical: 10),
-                        child: Row(
-                          children: const [
-                            Text(
-                              "Filter",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 16),
-                            ),
-                            Icon(
-                              Icons.tune,
-                              size: 24,
-                              color: Colors.white,
-                            )
-                          ],
-                        )),
-                  ],
                 ),
                 ListView(
                   scrollDirection: Axis.vertical,
@@ -244,6 +177,27 @@ class _ServiceCenterListState extends State<ServiceCenterList> {
                                     Icons.two_wheeler,
                                     size: 20,
                                     color: Colors.green,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: services,
+                                  style: const TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.grey),
+                                ),
+                              ]),
+                            ),
+                            const SizedBox(
+                              width: 50.0,
+                            ),
+                            RichText(
+                              text: TextSpan(children: [
+                                const WidgetSpan(
+                                  child: Icon(
+                                    Icons.favorite_rounded,
+                                    size: 25,
+                                    color: Colors.red,
                                   ),
                                 ),
                                 TextSpan(

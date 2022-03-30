@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:merogadi/booking_history.dart';
 import 'package:merogadi/card_widget.dart';
 //import 'package:merogadi/map_utils.dart';
 import 'package:merogadi/nav.dart';
@@ -129,21 +130,31 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: const HomeCards(
-                        title: "General service",
-                        background: Color(0xFF80DEEA),
-                        icons: Icons.miscellaneous_services,
+                      child: GestureDetector(
+                        onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const UserBook())),
+                        child: const HomeCards(
+                          title: "Booking",
+                          background: Color(0xFF80DEEA),
+                          icons: Icons.book,
+                        ),
                       ),
                     ),
                     ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: const HomeCards(
-                        title: "Repair",
-                        background: Color(0xFFB2EBF2),
-                        icons: Icons.build_circle,
-                      ),
-                    )
+                        borderRadius: BorderRadius.circular(10),
+                        child: GestureDetector(
+                          onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const BookHistory())),
+                          child: const HomeCards(
+                            title: "Repair",
+                            background: Color(0xFFB2EBF2),
+                            icons: Icons.build_circle,
+                          ),
+                        )),
                   ])),
           // const Padding(
           //   padding: EdgeInsets.fromLTRB(16.0, 4.0, 0.0, 4.0),
@@ -207,12 +218,11 @@ class _HomePageState extends State<HomePage> {
                     onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const UserBook())),
+                            builder: (context) => const BookHistory())),
                     child: const HomeCards(
-                      title: "Booking",
-                      background: Color(0xFFFBE9E7),
-                      icons: Icons.book,
-                    ),
+                        title: "Booking \nHistory",
+                        background: Color(0xFFFBE9E7),
+                        icons: Icons.history_edu_rounded),
                   ),
                 ],
               )),

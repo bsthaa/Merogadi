@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 //import 'package:cupertino_icons/cupertino_icons.dart';
 import 'package:merogadi/button_widget.dart';
 import 'package:merogadi/data_rows.dart';
 import 'package:merogadi/iconned_button.dart';
+import 'package:share_plus/share_plus.dart';
 
 class ServiceCenterInfo extends StatefulWidget {
   const ServiceCenterInfo({Key? key}) : super(key: key);
@@ -28,7 +30,7 @@ class _ServiceCenterInfoState extends State<ServiceCenterInfo> {
       backgroundColor: const Color(0xff18203d),
       appBar: AppBar(
         backgroundColor: const Color(0xff18203d),
-        elevation: 0,
+        elevation: 4,
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back,
@@ -40,12 +42,20 @@ class _ServiceCenterInfoState extends State<ServiceCenterInfo> {
             Navigator.pop(context);
           },
         ),
-        actions: const [
-          Icon(
-            CupertinoIcons.arrowshape_turn_up_right,
-            color: Colors.white,
-            size: 28,
-          )
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(
+              CupertinoIcons.arrowshape_turn_up_right,
+            ),
+            highlightColor: Colors.white,
+            iconSize: 33,
+            onPressed: () async {
+              const weburl =
+                  'https://www.google.com/search?q=service%20center&oq=&aqs=chrome.5.69i59i450l8.401148j0j1&sourceid=chrome&ie=UTF-8&tbs=lf:1,lf_ui:14&tbm=lcl&rflfq=1&num=10&rldimm=13660862572278729970&lqi=Cg5zZXJ2aWNlIGNlbnRlckiAsMP2-a-AgAhaIBAAEAEYABgBIg5zZXJ2aWNlIGNlbnRlcioGCAMQABABkgEIbWVjaGFuaWOqARYQASoSIg5zZXJ2aWNlIGNlbnRlcigA&ved=2ahUKEwjp7rzn8-32AhXSilwKHX88CzoQvS56BAgFEAE&rlst=f#rlfi=hd:;si:13660862572278729970,l,Cg5zZXJ2aWNlIGNlbnRlckiAsMP2-a-AgAhaIBAAEAEYABgBIg5zZXJ2aWNlIGNlbnRlcioGCAMQABABkgEIbWVjaGFuaWOqARYQASoSIg5zZXJ2aWNlIGNlbnRlcigA;mv:[[27.7361176,85.3757736],[27.6412992,85.2956466]]';
+
+              await Share.share('Service Center\n $weburl');
+            },
+          ),
         ],
       ),
       body: SingleChildScrollView(
@@ -103,23 +113,33 @@ class _ServiceCenterInfoState extends State<ServiceCenterInfo> {
               children: [
                 Container(
                   decoration: const BoxDecoration(
-                    color: Color(0xff1565C0),
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.all(Radius.circular(4)),
                   ),
                   child: const IconnedButton(
-                      icondataa: Icons.add,
-                      texttitle: "Add Review",
-                      colors: Colors.white),
+                    icondataa: Icons.add,
+                    texttitle: "Add Review",
+                    colors: Colors.white,
+                  ),
                 ),
-                Container(
-                  decoration: const BoxDecoration(
-                    color: Color(0xff1565C0),
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                SizedBox(
+                  width: 145.0,
+                  height: 50.0,
+                  child: ElevatedButton.icon(
+                    label: const Text(
+                      "Favourite",
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+                    ),
+                    icon: const Icon(
+                      Icons.favorite_rounded,
+                      color: Colors.white,
+                    ),
+                    onPressed: () {
+                      Fluttertoast.showToast(
+                          msg: "Sucessfully Added to Favourite");
+                    },
                   ),
-                  child: const IconnedButton(
-                      icondataa: Icons.favorite,
-                      texttitle: "Favorite",
-                      colors: Colors.white),
                 ),
               ],
             ),

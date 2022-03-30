@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:merogadi/about.dart';
 import 'package:merogadi/contactus.dart';
+import 'package:merogadi/favourite.dart';
 import 'package:merogadi/terms_and_cond.dart';
+import 'package:share_plus/share_plus.dart';
 
 class NavBar extends StatelessWidget {
   const NavBar({Key? key}) : super(key: key);
@@ -41,7 +43,8 @@ class NavBar extends StatelessWidget {
               'Favorites',
               style: TextStyle(fontSize: 18),
             ),
-            onTap: () => {Navigator.of(context).pop()},
+            onTap: () => Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const FavCenter())),
           ),
           ListTile(
             leading: const Icon(
@@ -52,7 +55,12 @@ class NavBar extends StatelessWidget {
               'Share',
               style: TextStyle(fontSize: 18),
             ),
-            onTap: () => {Navigator.of(context).pop()},
+            onTap: () async {
+              const weburl =
+                  'https://play.google.com/store/apps/details?id=com.facebook.katana';
+
+              await Share.share('Merogadi on Playstore\n $weburl');
+            },
           ),
           ListTile(
             leading: const Icon(

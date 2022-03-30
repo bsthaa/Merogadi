@@ -1,6 +1,7 @@
 //import 'package:date_field/date_field.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'dart:async';
 import 'package:flutter/material.dart';
@@ -31,7 +32,7 @@ class _UserBookState extends State<UserBook> {
               color: Colors.white, fontWeight: FontWeight.w700, fontSize: 22),
         ),
         centerTitle: true,
-        elevation: 0,
+        elevation: 4,
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back,
@@ -45,8 +46,16 @@ class _UserBookState extends State<UserBook> {
         ),
       ),
       backgroundColor: const Color(0xff18203d),
-      body: ListView(padding: const EdgeInsets.all(16), children: <Widget>[
-        const SizedBox(height: 25),
+      body: ListView(padding: const EdgeInsets.all(25), children: <Widget>[
+        // const SizedBox(height: 10),
+        const Text(
+          'Name',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 18,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
         TextField(
           controller: controllerName,
           decoration: const InputDecoration(
@@ -57,6 +66,14 @@ class _UserBookState extends State<UserBook> {
           ),
         ),
         const SizedBox(height: 24),
+        const Text(
+          'Bike Model',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 18,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
         TextField(
           controller: controllerModel,
           decoration: const InputDecoration(
@@ -68,6 +85,14 @@ class _UserBookState extends State<UserBook> {
           //keyboardType: TextInputType.number,
         ),
         const SizedBox(height: 24),
+        const Text(
+          'Phone Number',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 18,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
         TextField(
           controller: controllerPhone,
           decoration: const InputDecoration(
@@ -79,6 +104,14 @@ class _UserBookState extends State<UserBook> {
           keyboardType: TextInputType.number,
         ),
         const SizedBox(height: 24),
+        const Text(
+          'Address',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 18,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
         TextField(
           controller: controllerAddress,
           decoration: const InputDecoration(
@@ -89,9 +122,18 @@ class _UserBookState extends State<UserBook> {
           ),
         ),
         const SizedBox(height: 24),
+        const Text(
+          'Date',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 18,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
         DateTimeField(
           controller: controllerDate,
           decoration: const InputDecoration(
+            border: OutlineInputBorder(),
             fillColor: Color(0xFFEEEEEE),
             filled: true,
             //border: OutlineInputBorder(),
@@ -108,6 +150,14 @@ class _UserBookState extends State<UserBook> {
           },
         ),
         const SizedBox(height: 24),
+        const Text(
+          'Drop In / Drop Off',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 18,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
         TextField(
           controller: controllerDropIn,
           decoration: const InputDecoration(
@@ -118,23 +168,28 @@ class _UserBookState extends State<UserBook> {
           ),
         ),
         const SizedBox(height: 32),
-        ElevatedButton(
-          child: const Text(
-            'Book',
-            style: TextStyle(fontSize: 20),
+        SizedBox(
+          width: 50.0,
+          height: 50.0,
+          child: ElevatedButton(
+            child: const Text(
+              'Book',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+            ),
+            onPressed: () {
+              final user = User(
+                name: controllerName.text,
+                model: controllerModel.text,
+                phone: int.parse(controllerPhone.text),
+                address: controllerAddress.text,
+                date: DateTime.parse(controllerDate.text),
+                dropIn: controllerDropIn.text,
+              );
+              createUser(user);
+              Fluttertoast.showToast(msg: "Bike Service Booked Sucessfully.");
+              Navigator.pop(context);
+            },
           ),
-          onPressed: () {
-            final user = User(
-              name: controllerName.text,
-              model: controllerModel.text,
-              phone: int.parse(controllerPhone.text),
-              address: controllerAddress.text,
-              date: DateTime.parse(controllerDate.text),
-              dropIn: controllerDropIn.text,
-            );
-            createUser(user);
-            Navigator.pop(context);
-          },
         ),
       ]));
   InputDecoration decoration(String label) => InputDecoration(
