@@ -36,7 +36,7 @@ class PartsCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(
-                  height: 8,
+                  height: 10,
                 ),
                 Align(
                   alignment: FractionalOffset.bottomCenter,

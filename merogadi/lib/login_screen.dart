@@ -1,5 +1,6 @@
 //import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:merogadi/password_reset.dart';
 import 'package:merogadi/signup_screen.dart';
 import 'package:merogadi/home.dart';
@@ -217,6 +218,14 @@ class _LoginScreenState extends State<LoginScreen> {
   // login function
   void signIn(String email, String password) async {
     if (_formKey.currentState!.validate()) {
+      showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (context) => const Center(
+                  child: SpinKitFadingGrid(
+                size: 100,
+                color: Colors.green,
+              )));
       try {
         await _auth
             .signInWithEmailAndPassword(email: email, password: password)

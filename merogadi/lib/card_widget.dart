@@ -19,13 +19,13 @@ class HomeCards extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(0.0),
       child: Card(
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
         child: Container(
-          height: 150,
-          width: 150,
+          height: 160,
+          width: 160,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             color: background,
@@ -37,11 +37,11 @@ class HomeCards extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 CircleAvatar(
-                  radius: 24,
+                  radius: 30,
                   backgroundColor: Colors.white,
                   child: Icon(
                     icons,
-                    size: 36,
+                    size: 40,
                     color: Colors.black,
                   ),
                 ),

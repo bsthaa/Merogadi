@@ -32,6 +32,51 @@ class _BookHistoryState extends State<BookHistory> {
           ),
           centerTitle: true,
           elevation: 4,
+          actions: [
+            IconButton(
+                icon: const Icon(
+                  Icons.clear_all,
+                  color: Colors.white,
+                  size: 28,
+                ),
+                onPressed: () async {
+                  // show the confirm dialog
+                  await showDialog(
+                      context: context,
+                      builder: (_) => AlertDialog(
+                            title: const Text(
+                                'Are you sure want to clear booking history?'),
+                            actions: [
+                              ElevatedButton(
+                                  onPressed: () => Navigator.of(context).pop(),
+                                  child: const Text('No')),
+                              TextButton(
+                                  onPressed: () async {
+                                    final instance = FirebaseFirestore.instance;
+                                    final batch = instance.batch();
+                                    var collection =
+                                        instance.collection('booking');
+                                    var snapshots = await collection.get();
+                                    for (var doc in snapshots.docs) {
+                                      batch.delete(doc.reference);
+                                    }
+                                    await batch.commit();
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: const Text('Yes'))
+                            ],
+                          ));
+                })
+          ],
+          // ElevatedButton(
+          //     child: const Text('Clear History'),
+          //     onPressed: () {
+          //       final docUser = FirebaseFirestore.instance
+          //           .collection('booking')
+          //           .doc('name');
+          //       docUser.delete();
+          //     }
+          //     ),
           leading: IconButton(
             icon: const Icon(
               Icons.arrow_back,
@@ -51,6 +96,7 @@ class _BookHistoryState extends State<BookHistory> {
                 return Text('Wrong! ${snapshot.error}');
               } else if (snapshot.hasData) {
                 final users = snapshot.data!;
+
                 return ListView(
                   children: users.map(buildUser).toList(),
                 );
@@ -71,7 +117,7 @@ class _BookHistoryState extends State<BookHistory> {
           ),
         ),
         title: Text(
-          user.name,
+          user.address,
           style: const TextStyle(
               color: Colors.white, fontWeight: FontWeight.w700, fontSize: 22),
         ),

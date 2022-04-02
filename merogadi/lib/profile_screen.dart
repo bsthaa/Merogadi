@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:merogadi/userdata/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -226,6 +227,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                   ),
                   onPressed: () {
+                    showDialog(
+                        context: context,
+                        barrierDismissible: false,
+                        builder: (context) => const Center(
+                                child: SpinKitFadingGrid(
+                              size: 100,
+                              color: Colors.green,
+                            )));
                     logout(context);
                   }),
             ],

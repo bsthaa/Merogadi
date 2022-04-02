@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:merogadi/bike_profile.dart';
 import 'package:merogadi/booking_history.dart';
 import 'package:merogadi/card_widget.dart';
 //import 'package:merogadi/map_utils.dart';
@@ -25,7 +26,13 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         elevation: 3,
         backgroundColor: const Color(0xff18203d),
-        title: const Text('Merogadi'),
+        title: const Text(
+          'Merogadi',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 25,
+          ),
+        ),
         centerTitle: true,
         actions: <Widget>[
           IconButton(
@@ -47,25 +54,18 @@ class _HomePageState extends State<HomePage> {
       body: SingleChildScrollView(
           child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(18.0, 22, 18.0, 22),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            ),
+          const Padding(
+            padding: EdgeInsets.fromLTRB(18.0, 15, 18.0, 15),
           ),
 
           SizedBox(
             child: Row(
               children: const [
-                // const SizedBox(
-                //   width: 4.0,
-                // ),
                 Text(
-                  "    24 X 7 service provider",
+                  "       24 X 7 service provider",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
-                    // fontWeight: FontWeight.w700,
                     fontSize: 20,
                   ),
                 )
@@ -75,12 +75,11 @@ class _HomePageState extends State<HomePage> {
 
           Padding(
             padding: const EdgeInsets.fromLTRB(18.0, 13.5, 18.0, 13.5),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+            child: Column(
               children: [
                 SizedBox(
                   height: 50,
-                  width: 365,
+                  width: 371,
                   child: TextField(
                     decoration: InputDecoration(
                       prefixIcon: IconButton(
@@ -104,7 +103,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 const SizedBox(
-                  width: 10,
+                  width: 25,
                 ),
                 // ClipRRect(
                 //   borderRadius: BorderRadius.circular(10),
@@ -124,7 +123,7 @@ class _HomePageState extends State<HomePage> {
           ),
 
           SizedBox(
-              height: 180,
+              height: 210,
               width: MediaQuery.of(context).size.width,
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -148,12 +147,11 @@ class _HomePageState extends State<HomePage> {
                           onTap: () => Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const BookHistory())),
+                                  builder: (context) => const BikeProfile())),
                           child: const HomeCards(
-                            title: "Repair",
-                            background: Color(0xFFB2EBF2),
-                            icons: Icons.build_circle,
-                          ),
+                              title: "Bike Profile",
+                              background: Color(0xFFB2EBF2),
+                              icons: Icons.motorcycle_rounded),
                         )),
                   ])),
           // const Padding(

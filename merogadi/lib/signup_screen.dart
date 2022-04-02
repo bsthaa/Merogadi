@@ -1,9 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:get/route_manager.dart';
 import 'package:merogadi/userdata/user_model.dart';
 import 'package:merogadi/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+
+import 'main.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -310,6 +314,14 @@ class _RegistrationScreenState extends State<SignUpScreen> {
 
   void signUp(String email, String password) async {
     if (_formKey.currentState!.validate()) {
+      showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (context) => const Center(
+                  child: SpinKitFadingGrid(
+                size: 100,
+                color: Colors.green,
+              )));
       try {
         await _auth
             .createUserWithEmailAndPassword(email: email, password: password)
@@ -344,6 +356,7 @@ class _RegistrationScreenState extends State<SignUpScreen> {
         // ignore: avoid_print
         print(error.code);
       }
+      // navigatorKey.currentState!.popUntil((route) => route.isFirst);
     }
   }
 
