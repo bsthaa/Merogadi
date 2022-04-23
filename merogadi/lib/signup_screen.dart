@@ -320,7 +320,7 @@ class _RegistrationScreenState extends State<SignUpScreen> {
           builder: (context) => const Center(
                   child: SpinKitFadingGrid(
                 size: 100,
-                color: Colors.green,
+                color: Colors.blue,
               )));
       try {
         await _auth

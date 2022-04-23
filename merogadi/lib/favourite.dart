@@ -23,14 +23,6 @@ class _FavCenterState extends State<FavCenter> {
         "description":
             "All company motorbike services available with expirience technisian."
       },
-      {
-        "title": "Bajaj auto shop",
-        "imageUrl": "assets/images/man01.jpg",
-        "rating": "4.3",
-        "location": "Haddigaun,Kathmandu",
-        "description":
-            "All company motorbike services available with expirience technisian."
-      },
     ];
 
     return Scaffold(

@@ -74,17 +74,17 @@ class NavBar extends StatelessWidget {
             onTap: () => Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const ContactUs())),
           ),
-          ListTile(
-            leading: const Icon(
-              Icons.quiz_sharp,
-              size: 24,
-            ),
-            title: const Text(
-              'FAQ',
-              style: TextStyle(fontSize: 18),
-            ),
-            onTap: () => {Navigator.of(context).pop()},
-          ),
+          // ListTile(
+          //   leading: const Icon(
+          //     Icons.quiz_sharp,
+          //     size: 24,
+          //   ),
+          //   title: const Text(
+          //     'FAQ',
+          //     style: TextStyle(fontSize: 18),
+          //   ),
+          //   onTap: () => {Navigator.of(context).pop()},
+          // ),
           ListTile(
             leading: const Icon(
               Icons.info,

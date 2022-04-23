@@ -203,8 +203,26 @@ class _LoginScreenState extends State<LoginScreen> {
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15),
                           ),
-                        )
-                      ])
+                        ),
+                      ]),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const HomePage()));
+                    },
+                    child: const Text(
+                      "Get started...",
+                      style: TextStyle(
+                          color: Color(0xff1565C0),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16),
+                    ),
+                  )
                 ],
               ),
             ),
@@ -224,7 +242,7 @@ class _LoginScreenState extends State<LoginScreen> {
           builder: (context) => const Center(
                   child: SpinKitFadingGrid(
                 size: 100,
-                color: Colors.green,
+                color: Colors.blue,
               )));
       try {
         await _auth
