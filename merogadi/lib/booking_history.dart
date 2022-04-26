@@ -89,7 +89,7 @@ class _BookHistoryState extends State<BookHistory> {
             },
           ),
         ),
-        body: StreamBuilder<List<User>>(
+        body: StreamBuilder<List<Book>>(
             stream: readUsers(),
             builder: (context, snapshot) {
               if (snapshot.hasError) {
@@ -106,7 +106,7 @@ class _BookHistoryState extends State<BookHistory> {
             }),
         backgroundColor: const Color(0xff18203d),
       );
-  Widget buildUser(User user) => ListTile(
+  Widget buildUser(Book user) => ListTile(
         leading: CircleAvatar(
           radius: 30,
           // child: Text('${user.date}'),
@@ -128,11 +128,11 @@ class _BookHistoryState extends State<BookHistory> {
         ),
       );
 
-  Stream<List<User>> readUsers() => FirebaseFirestore.instance
+  Stream<List<Book>> readUsers() => FirebaseFirestore.instance
       .collection('booking')
       .snapshots()
       .map((snapshots) =>
-          snapshots.docs.map((doc) => User.fromJson(doc.data())).toList());
+          snapshots.docs.map((doc) => Book.fromJson(doc.data())).toList());
 
   // Future createUser(User user) async {
   //   final docUser = FirebaseFirestore.instance.collection('booking').doc();
@@ -142,8 +142,8 @@ class _BookHistoryState extends State<BookHistory> {
   // }
 }
 
-class User {
-  static User fromJson(Map<String, dynamic> json) => User(
+class Book {
+  static Book fromJson(Map<String, dynamic> json) => Book(
         id: json['id'],
         name: json['name'],
         model: json['model'],
@@ -160,7 +160,7 @@ class User {
   final DateTime date;
   final String dropIn;
 
-  User({
+  Book({
     this.id = '',
     required this.name,
     required this.model,

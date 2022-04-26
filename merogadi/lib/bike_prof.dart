@@ -51,7 +51,7 @@ class _UserBikeState extends State<UserBike> {
             child: Column(children: [
               // const SizedBox(height: 10),
               const Text(
-                'Name',
+                'Bike Company',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 18,
@@ -70,7 +70,7 @@ class _UserBikeState extends State<UserBike> {
               ),
               const SizedBox(height: 24),
               const Text(
-                'Bike Company',
+                'Bike Model',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 18,

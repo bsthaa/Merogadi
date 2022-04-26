@@ -6,6 +6,7 @@ import 'package:intl/intl.dart';
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
+import 'package:merogadi/userdata/user_model.dart';
 
 class UserBook extends StatefulWidget {
   const UserBook({Key? key}) : super(key: key);
@@ -17,6 +18,8 @@ class UserBook extends StatefulWidget {
 class _UserBookState extends State<UserBook> {
   final _formkey = GlobalKey<FormState>();
 
+  UserModel loggedInUser = UserModel();
+  User? user = FirebaseAuth.instance.currentUser;
   final format = DateFormat("yyyy-MM-dd");
   final controllerName = TextEditingController();
   final controllerModel = TextEditingController();
@@ -24,6 +27,19 @@ class _UserBookState extends State<UserBook> {
   final controllerAddress = TextEditingController();
   final controllerDate = TextEditingController();
   final controllerDropIn = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseFirestore.instance
+        .collection("users")
+        .doc(user!.uid)
+        .get()
+        .then((value) {
+      loggedInUser = UserModel.fromMap(value.data());
+      setState(() {});
+    });
+  }
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -56,30 +72,30 @@ class _UserBookState extends State<UserBook> {
             key: _formkey,
             child: Column(children: [
               // const SizedBox(height: 10),
-              const Text(
-                'Name',
-                style: TextStyle(
+              Text(
+                "User Name:  ${loggedInUser.firstName} ${loggedInUser.secondName}",
+                style: const TextStyle(
                   color: Colors.white,
-                  fontSize: 18,
+                  fontSize: 20,
                   fontWeight: FontWeight.w700,
                 ),
               ),
 
-              TextFormField(
-                controller: controllerName,
-                decoration: const InputDecoration(
-                  fillColor: Color(0xFFEEEEEE),
-                  filled: true,
-                  border: OutlineInputBorder(),
-                  hintText: 'Enter Your Full Name',
-                ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return ("Name cannot be empty.");
-                  }
-                  return null;
-                },
-              ),
+              // TextFormField(
+              //   controller: controllerName,
+              //   decoration: const InputDecoration(
+              //     fillColor: Color(0xFFEEEEEE),
+              //     filled: true,
+              //     border: OutlineInputBorder(),
+              //     hintText: 'Enter Your Full Name',
+              //   ),
+              //   validator: (value) {
+              //     if (value == null || value.isEmpty) {
+              //       return ("Name cannot be empty.");
+              //     }
+              //     return null;
+              //   },
+              // ),
               const SizedBox(height: 24),
               const Text(
                 'Bike Model',
@@ -216,7 +232,7 @@ class _UserBookState extends State<UserBook> {
                   ),
                   onPressed: () {
                     if (_formkey.currentState!.validate()) {
-                      final user = User(
+                      final user = Book(
                         name: controllerName.text,
                         model: controllerModel.text,
                         phone: int.parse(controllerPhone.text),
@@ -245,7 +261,7 @@ class _UserBookState extends State<UserBook> {
         labelText: label,
         border: const OutlineInputBorder(),
       );
-  Future createUser(User user) async {
+  Future createUser(Book user) async {
     final docUser = FirebaseFirestore.instance.collection('booking').doc();
     user.id = docUser.id;
     final json = user.toJson();
@@ -253,7 +269,7 @@ class _UserBookState extends State<UserBook> {
   }
 }
 
-class User {
+class Book {
   String id;
   final String name;
   final String model;
@@ -262,7 +278,7 @@ class User {
   final DateTime date;
   final String dropIn;
 
-  User({
+  Book({
     this.id = '',
     required this.name,
     required this.model,

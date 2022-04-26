@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
+//import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:merogadi/userdata/user_model.dart';
@@ -19,6 +20,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
   File? pickedImage;
   User? user = FirebaseAuth.instance.currentUser;
   UserModel loggedInUser = UserModel();
+
+  // Future uploadFile() async {
+  //   final path = 'files/${pickedFile!.name}';
+  //   final file = File(PickedFile!.path!);
+
+  //   final ref = FirebaseStorage.instance.ref().child(path);
+  //   ref.putFile(file);
+  // }
 
   void imagePickerOption() {
     Get.bottomSheet(
